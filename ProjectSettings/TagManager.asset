@@ -8,6 +8,8 @@ TagManager:
   - Bullet
   - Enemy
   - ScreenShake
+  - ScoreManager
+  - FloorTrigger
   layers:
   - Default
   - TransparentFX
@@ -56,4 +58,10 @@ TagManager:
     locked: 0
   - name: Guns
     uniqueID: 3535955961
+    locked: 0
+  - name: EnemyOutline
+    uniqueID: 4249030949
+    locked: 0
+  - name: Enemy
+    uniqueID: 3916234301
     locked: 0

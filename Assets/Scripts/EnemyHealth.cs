@@ -8,9 +8,11 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] private int enemyHealth = 2;
     SpriteRenderer sprite;
     private Shake shake;
+    private ScoreScript Score;
     // Start is called before the first frame update
     void Start()
     {
+        Score = GameObject.FindGameObjectWithTag("ScoreManager").GetComponent<ScoreScript>();
         sprite = GetComponentInChildren<SpriteRenderer>();
         shake = GameObject.FindGameObjectWithTag("ScreenShake").GetComponent<Shake>();
     }
@@ -24,6 +26,8 @@ public class EnemyHealth : MonoBehaviour
             shake.CamShake();
             ps.Play();
             Destroy(gameObject);
+            Score.score += 10;
+            return;
         }
     }
 
@@ -31,6 +35,7 @@ public class EnemyHealth : MonoBehaviour
     {
         if (collision.gameObject.tag == "Bullet") {
             enemyHealth -= 1;
+            Score.score += 5;
             sprite.color = new Color (1, 0, 0, 1);
             Invoke(nameof(ChangeColorBack), 0.2f);
         }

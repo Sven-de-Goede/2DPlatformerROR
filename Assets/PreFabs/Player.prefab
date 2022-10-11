@@ -759,7 +759,6 @@ GameObject:
   - component: {fileID: 8869014694519074018}
   - component: {fileID: 8869014694519074022}
   - component: {fileID: 8628593353873446195}
-  - component: {fileID: 7059367168162570401}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1050,6 +1049,7 @@ MonoBehaviour:
   Gun: {fileID: 0}
   shootPoint: {fileID: 0}
   Bullet: {fileID: 423446733750263036, guid: d0abeb4e8bb891d46a2bb0cc282e63d7, type: 3}
+  BulletClone: {fileID: 0}
   bulletSpeed: 1200
   fireRate: 4
 --- !u!114 &8628593353873446195
@@ -1065,15 +1065,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health: 2
---- !u!114 &7059367168162570401
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8869014694519074031}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d00092ac106d464449bc0339ca83d6c5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

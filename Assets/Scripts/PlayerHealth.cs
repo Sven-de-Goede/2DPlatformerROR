@@ -18,14 +18,16 @@ public class PlayerHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Destroy if health under 0
         if (Health <= 0){
             shake.CamShake();
             Destroy(gameObject);
+            return;
         }
-
         hitCooldown -=0.1f;
     }
 
+    // Detect collision with enemy 
         void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Enemy" && hitCooldown <=0) {

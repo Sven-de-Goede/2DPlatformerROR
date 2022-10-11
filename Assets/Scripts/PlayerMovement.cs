@@ -29,6 +29,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+
         if (isDashing)
         {
             return;
@@ -36,7 +37,7 @@ public class PlayerMovement : MonoBehaviour
 
         horizontal = Input.GetAxisRaw("Horizontal");
 
-
+        //all controls
         if (IsGrounded())
         {
             coyoteTimeCounter = coyoteTime;
@@ -86,7 +87,8 @@ public class PlayerMovement : MonoBehaviour
 
 
 private void FixedUpdate()
-    {
+    {   
+        //makes it so when character is in dash, no controls are allowed
         if (isDashing)
         {
             return;
@@ -95,12 +97,14 @@ private void FixedUpdate()
         rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
     }
 
+    // checks if character is grounded
     private bool IsGrounded()
     {
         return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
         
     }
 
+    // flip character on direction change
     private void Flip()
     {
         if (isFacingRight && horizontal < 0f || !isFacingRight && horizontal > 0f)
@@ -112,6 +116,7 @@ private void FixedUpdate()
         }
     }
 
+    // dash code
     private IEnumerator Dash()
     {
         canDash = false;
@@ -128,10 +133,19 @@ private void FixedUpdate()
         canDash = true;
     }
 
+    // jump cooldown
     private IEnumerator JumpCooldown()
     {
         isJumping = true;
         yield return new WaitForSeconds(0.4f);
         isJumping = false;
+    }
+
+    // reset on hitting floortrigger
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "FloorTrigger") {
+            transform.position = new Vector3(0, 0, 0);     
+        }    
     }
 }
